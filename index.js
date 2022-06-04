@@ -1,7 +1,7 @@
 const aoijs = require("aoi.js")
 
 const bot = new aoijs.Bot({
-token: "OTgwNDkwOTk2MTU0NTExMzkw.GJHoZl.WoAd-lClw7KBvRyldjbF0kB2rZmpigtRSTqeZw",
+token: "OTcxNDAxOTgwMjEzODgyOTAw.GhNvwU.vuccREktpB_6QeeJExNm60XwX_OLZLEeyPzO7g",
 prefix: "!",
 intents: ["GUILDS", "GUILD_MESSAGES"]
 })
@@ -17,6 +17,7 @@ bot.onMessage({
 bot.variables({
 antisay: "false",
 antichnl: "false",
+  antirole: "false"
 })
 
 bot.status({
@@ -35,3 +36,7 @@ bot.channelCreateCommand({
 code:`$deleteChannel[$channelID]
 $onlyIf[$getServerVar[antichnl]==true]`})
 
+bot.onRoleCreate()
+bot.roleCreateCommand({
+code:`$deleteRole[$roleid[;]]
+$onlyIf[$getServerVar[antirole]==true]`})
